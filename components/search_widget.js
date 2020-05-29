@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { submitRoute } from "../store/routeplan/action";
 import GooglePlacesAutocomplete from "react-google-places-autocomplete";
 import { useState } from "react";
+import { constants } from "../environment/constants";
 
 // const Paragraph = styled.p`
 //   font-weight: bold;
@@ -43,6 +44,7 @@ function SearchWidget({ submitRoute }) {
         <Form.Group controlId="formOrigin">
           <CustomLabel>¿De donde sales?</CustomLabel>
           <CustomInput
+            apiKey={constants.APIKEY}
             onSelect={(e) => setOriginId(e.place_id)}
             placeholder="Origen"
           />

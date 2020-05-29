@@ -43,13 +43,17 @@ function Map({ inputRoute, responseRoute, drawRoute }) {
       defaultCenter={{ lat: 19.407891, lng: -99.161045 }}
       defaultZoom={14}
     >
-      {drawRoute.routes.map((item, i) => {
-        return <DirectionsRenderer
-        key={i}
-        directions={drawRoute}
-        defaultRouteIndex={i}
-      />
-      })}
+      {drawRoute == null
+        ? ""
+        : drawRoute.routes.map((item, i) => {
+            return (
+              <DirectionsRenderer
+                key={i}
+                directions={drawRoute}
+                defaultRouteIndex={i}
+              />
+            );
+          })}
     </GoogleMap>
   ));
   return (

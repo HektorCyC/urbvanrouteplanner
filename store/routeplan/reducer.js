@@ -1,17 +1,21 @@
 import { actionTypes } from "./action";
 
 const countInitialState = {
-  response: 0
+  input: null,
+  responseRoute: null,
 };
 
 export default function reducer(state = countInitialState, action) {
+  // console.log(action)
   switch (action.type) {
     case actionTypes.SUBMIT:
-      return {
-        // origin: state.origin,
-        response: state.response,
-        // destination: state.destination,
-      };
+      return Object.assign({}, state, {
+        input: action.payload,
+      });
+    case actionTypes.RESPONSE:
+      return Object.assign({}, state, {
+        responseRoute: action.payload,
+      });
     default:
       return state;
   }

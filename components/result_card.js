@@ -18,20 +18,27 @@ const Paragraph = styled.p`
   font-size: 0.85rem;
   color: grey;
 `;
-export default function ResultCardWidget() {
+export default function ResultCardWidget({
+  origin,
+  destination,
+  travelTime,
+  travelDistance,
+  originLatLong,
+  destinationLatLong
+}) {
   return (
     <ResultCard className="mt-3 mb-3">
       <Card.Body>
         <Row>
           <Col xs={8}>
-            <CardTitle>Eje central 306, Portales norte</CardTitle>
+            <CardTitle>{origin}</CardTitle>
             <CardSubtitle className="mb-2 text-muted">
-              @19.12381283812, -12.12182182
+              @{originLatLong}
             </CardSubtitle>
           </Col>
           <Col xs={4} md={4} className="text-center">
             <Paragraph>
-              55 min
+              {travelTime}
               <br />
               de viaje
             </Paragraph>
@@ -39,14 +46,14 @@ export default function ResultCardWidget() {
         </Row>
         <Row>
           <Col xs={8}>
-            <CardTitle>Reforma 222, Juarez</CardTitle>
+            <CardTitle>{destination}</CardTitle>
             <CardSubtitle className="mb-2 text-muted">
-              @19.12381283812, -12.12182182
+              @{destinationLatLong}
             </CardSubtitle>
           </Col>
           <Col xs={4} md={4} className="text-center">
             <Paragraph>
-              12.56 km
+              {travelDistance}
               <br />
               de viaje
             </Paragraph>

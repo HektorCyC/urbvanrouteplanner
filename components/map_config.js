@@ -1,45 +1,55 @@
-/*global google*/
 import React from "react";
-import { Container } from "react-bootstrap";
+// import { Container } from "react-bootstrap";
 import { useEffect } from "react";
-// import { bindActionCreators } from "redux";
+import { bindActionCreators } from "redux";
 import { connect } from "react-redux";
+import { responseRoute } from "../store/routeplan/action";
 import {
   withGoogleMap,
   GoogleMap,
   DirectionsRenderer,
 } from "react-google-maps";
 
-function Map({ routeplan }) {
-
+function Map({ inputRoute, responseRoute, drawRoute }) {
   // useEffect(() => {
-  //   // console.log(routeplan);
-  //   const directionsService = new google.maps.DirectionsService();
-  //   const origin = { lat: 40.756795, lng: -73.954298 };
-  //   const destination = { lat: 41.756795, lng: -78.954298 };
-
-  //   directionsService.route(
-  //     {
-  //       origin: origin,
-  //       destination: destination,
-  //       travelMode: google.maps.TravelMode.DRIVING,
-  //     },
-  //     (result, status) => {
-  //       if (status === google.maps.DirectionsStatus.OK) {
-  //         console.log(result)
-  //       } else {
-  //         console.error(`Error  ${result}`);
-  //       }
-  //     }
-  //   );
+  const directionsService = new google.maps.DirectionsService();
+  const origin = {
+    lat: inputRoute == null ? null : inputRoute.origin[0],
+    lng: inputRoute == null ? null : inputRoute.origin[1],
+  };
+  const destination = {
+    lat: inputRoute == null ? null : inputRoute.destination[0],
+    lng: inputRoute == null ? null : inputRoute.destination[1],
+  };
+  directionsService.route(
+    {
+      origin: origin,
+      destination: destination,
+      travelMode: google.maps.TravelMode.DRIVING,
+      provideRouteAlternatives: true,
+    },
+    (result, status) => {
+      if (status === google.maps.DirectionsStatus.OK) {
+        responseRoute(result);
+      } else {
+        console.error(`Error ${result}`);
+      }
+    }
+  );
   // }, []);
-
   const Map = withGoogleMap(() => (
     <GoogleMap
-      defaultCenter={{ lat: 19.407899, lng: -99.161045 }}
+      defaultOptions={false}
+      defaultCenter={{ lat: 19.407891, lng: -99.161045 }}
       defaultZoom={14}
     >
-      <DirectionsRenderer directions={null} />
+      {drawRoute.routes.map((item, i) => {
+        return <DirectionsRenderer
+        key={i}
+        directions={drawRoute}
+        defaultRouteIndex={i}
+      />
+      })}
     </GoogleMap>
   ));
   return (
@@ -51,6 +61,12 @@ function Map({ routeplan }) {
 }
 
 const mapStateToProps = (state) => ({
-  routeplan: state.routeplan,
+  inputRoute: state.routeplan.input,
+  drawRoute: state.routeplan.responseRoute,
 });
-export default connect(mapStateToProps)(Map);
+const mapDispatchToProps = (dispatch) => {
+  return {
+    responseRoute: bindActionCreators(responseRoute, dispatch),
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(Map);

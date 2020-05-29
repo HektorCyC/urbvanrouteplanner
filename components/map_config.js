@@ -13,14 +13,14 @@ import {
 function Map({ inputRoute, responseRoute, drawRoute }) {
   // useEffect(() => {
   const directionsService = new google.maps.DirectionsService();
-  const origin = {
-    lat: inputRoute == null ? null : inputRoute.origin[0],
-    lng: inputRoute == null ? null : inputRoute.origin[1],
-  };
-  const destination = {
-    lat: inputRoute == null ? null : inputRoute.destination[0],
-    lng: inputRoute == null ? null : inputRoute.destination[1],
-  };
+  // const origin = {
+  //   lat: inputRoute == null ? null : inputRoute.origin[0],
+  //   lng: inputRoute == null ? null : inputRoute.origin[1],
+  // };
+  // const destination = {
+  //   lat: inputRoute == null ? null : inputRoute.destination[0],
+  //   lng: inputRoute == null ? null : inputRoute.destination[1],
+  // };
   directionsService.route(
     {
       origin: inputRoute == null ? null : { placeId: inputRoute.origin },

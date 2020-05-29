@@ -9,7 +9,7 @@ export default function MapWidget() {
     <Card>
       <Card.Body>
         <MapLoader
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?alternatives=true&key=${constants.APIKEY}`}
+          googleMapURL={`https://maps.googleapis.com/maps/api/js&key=${constants.APIKEY}`}
           loadingElement={<div style={{ height: `100%` }} />}
         />
       </Card.Body>

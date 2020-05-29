@@ -44,7 +44,6 @@ function SearchWidget({ submitRoute }) {
           <CustomLabel>¿De donde sales?</CustomLabel>
           <CustomInput
             onSelect={(e) => setOriginId(e.place_id)}
-            // apiKey="AIzaSyAlMM6rsG0LrVu2y0GXdJyyt7zpc4TVnb8"
             placeholder="Origen"
           />
         </Form.Group>

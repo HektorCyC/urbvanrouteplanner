@@ -1,0 +1,15 @@
+/* ensure all pages have Bootstrap CSS */
+@import "~bootstrap/dist/css/bootstrap.min.css";
+@import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+body {
+  font-family: "Lato", sans-serif;
+}
+.cntr-footer {
+  height: 50px;
+  margin-top: 20px;
+  display: flex;
+  color: grey;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px dashed #ccc;
+}

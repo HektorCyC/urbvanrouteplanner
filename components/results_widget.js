@@ -2,7 +2,6 @@ import { Container, Row, Col, Dropdown } from "react-bootstrap";
 import { connect } from "react-redux";
 import ResultCardWidget from "./result_card";
 function ResultsWidget({ drawRoute }) {
-  console.log(drawRoute);
   return drawRoute == null ? (
     ""
   ) : (
@@ -30,7 +29,7 @@ function ResultsWidget({ drawRoute }) {
             key={i}
             origin={item.legs[0].start_address}
             destination={item.legs[0].end_address}
-            originLatLong="18"
+            via={item.summary}
             travelTime={item.legs[0].duration.text}
             travelDistance={item.legs[0].distance.text}
           ></ResultCardWidget>

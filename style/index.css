@@ -1,6 +1,7 @@
 /* ensure all pages have Bootstrap CSS */
 @import "~bootstrap/dist/css/bootstrap.min.css";
 @import url("https://fonts.googleapis.com/css2?family=Lato&display=swap");
+@import "~react-google-places-autocomplete/dist/index.min.css";
 body {
   font-family: "Lato", sans-serif;
 }

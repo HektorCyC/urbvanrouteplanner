@@ -6,7 +6,6 @@ const countInitialState = {
 };
 
 export default function reducer(state = countInitialState, action) {
-  // console.log(action)
   switch (action.type) {
     case actionTypes.SUBMIT:
       return Object.assign({}, state, {

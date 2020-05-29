@@ -23,8 +23,7 @@ export default function ResultCardWidget({
   destination,
   travelTime,
   travelDistance,
-  originLatLong,
-  destinationLatLong
+  via
 }) {
   return (
     <ResultCard className="mt-3 mb-3">
@@ -32,9 +31,9 @@ export default function ResultCardWidget({
         <Row>
           <Col xs={8}>
             <CardTitle>{origin}</CardTitle>
-            <CardSubtitle className="mb-2 text-muted">
-              @{originLatLong}
-            </CardSubtitle>
+            {/* <CardSubtitle className="mb-2 text-muted">
+              
+            </CardSubtitle> */}
           </Col>
           <Col xs={4} md={4} className="text-center">
             <Paragraph>
@@ -48,7 +47,7 @@ export default function ResultCardWidget({
           <Col xs={8}>
             <CardTitle>{destination}</CardTitle>
             <CardSubtitle className="mb-2 text-muted">
-              @{destinationLatLong}
+            Vía: {via}
             </CardSubtitle>
           </Col>
           <Col xs={4} md={4} className="text-center">

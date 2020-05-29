@@ -23,8 +23,9 @@ function Map({ inputRoute, responseRoute, drawRoute }) {
   };
   directionsService.route(
     {
-      origin: origin,
-      destination: destination,
+      origin: inputRoute == null ? null : { placeId: inputRoute.origin },
+      destination:
+        inputRoute == null ? null : { placeId: inputRoute.destination },
       travelMode: google.maps.TravelMode.DRIVING,
       provideRouteAlternatives: true,
     },

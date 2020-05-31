@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)](https://travis-ci.org/joemccann/dillinger)
 
 Simple route planner.
-Check the live [DEMO](https://urbvanrouteplanner-f0yqw9bhp.now.sh/)
+Check the live [DEMO](https://urbvanrouteplanner.now.sh/)
 
 ### Features the following technologies:
  - Google Maps Direcctions API ✅
